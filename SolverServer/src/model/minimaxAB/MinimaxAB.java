@@ -41,8 +41,21 @@ public class MinimaxAB {
 	 * @return
 	 * @throws CloneNotSupportedException
 	 */
+	
+	
+	public static void printBoard(int[][] boardArray) {
+		System.out.println("-------------------------");
+		 for(int i=0;i<boardArray.length;++i) {
+	            for(int j=0;j<boardArray[i].length;++j) {
+	                System.out.print(boardArray[i][j] + "\t");
+	            }
+	            System.out.println();
+	        }
+	        System.out.println("-------------------------");
+	}
+	
 	public static int findBestMove(State currentState, int depth) throws CloneNotSupportedException {
-		
+//		printBoard(currentState.getBoard());
         Board theBoard = new Board(currentState.getCopyBoard(), currentState.getScore());
 		Map<String, Object> result = alphabeta(theBoard, depth, Integer.MIN_VALUE, Integer.MAX_VALUE, Player.USER);
 		
@@ -67,9 +80,7 @@ public class MinimaxAB {
 	 */
 	
 	
-	private static Map<String, Object> alphabeta(Board theBoard, int depth,
-			int alpha, int beta, Player player)
-			throws CloneNotSupportedException {
+	private static Map<String, Object> alphabeta(Board theBoard, int depth, int alpha, int beta, Player player) throws CloneNotSupportedException {
 		Map<String, Object> result = new HashMap<>();
 
 		Direction bestDirection = null;
@@ -150,7 +161,7 @@ public class MinimaxAB {
 				}
 			}
 		}
-
+		
 		result.put("Score", bestScore);
 		result.put("Direction", bestDirection);
 
@@ -166,8 +177,7 @@ public class MinimaxAB {
 	 * @param clusteringScore
 	 * @return
 	 */
-	private static int heuristicScore(int actualScore, int numberOfEmptyCells,
-			int clusteringScore) {
+	private static int heuristicScore(int actualScore, int numberOfEmptyCells, int clusteringScore) {
 		int score = (int) (actualScore + Math.log(actualScore)
 				* numberOfEmptyCells - clusteringScore);
 		return Math.max(score, Math.min(actualScore, 1));
