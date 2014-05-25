@@ -43,7 +43,7 @@ public class MinimaxAB {
 	 */
 	public static int findBestMove(State currentState, int depth) throws CloneNotSupportedException {
 		
-        Board theBoard = new Board(currentState.getCopyBoard(), currentState.getScore());
+ 		Board theBoard = new Board(currentState.getCopyBoard(), currentState.getScore());
 		Map<String, Object> result = alphabeta(theBoard, depth, Integer.MIN_VALUE, Integer.MAX_VALUE, Player.USER);
 		
 		if(!(result.get("Direction")==null))

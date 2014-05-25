@@ -36,7 +36,7 @@ public class ClientRunnable implements Runnable {
 					break;
 				} else if (messageIn.getMsg().equals("getHint") && messageIn.getGame().equals("2048")) {
 					int direction = MinimaxAB.findBestMove(messageIn.getState(), messageIn.getDepth());
-					output.writeObject(new Message(null, "This is the best next move", direction, messageIn.getGame(), 0));
+					output.writeObject(new Message(null, "This is the best next move", direction, messageIn.getGame(), messageIn.getDepth()));
 				}
 			}
 			output.close();
