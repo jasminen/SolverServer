@@ -1,4 +1,4 @@
-package backend.controller;
+package controller;
 
 
 import java.net.InetAddress;

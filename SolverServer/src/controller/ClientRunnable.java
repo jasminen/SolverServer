@@ -1,4 +1,4 @@
-package backend.controller;
+package controller;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -6,8 +6,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketException;
 
+import model.minimaxAB.MinimaxAB;
 import common.Message;
-import backend.model.minimaxAB.MinimaxAB;
 
 public class ClientRunnable implements Runnable {
 

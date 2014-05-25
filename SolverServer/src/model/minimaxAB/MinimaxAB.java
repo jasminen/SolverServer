@@ -1,14 +1,14 @@
-package backend.model.minimaxAB;
+package model.minimaxAB;
 
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import model.minimaxAB.dataobjects.Board;
+import model.minimaxAB.dataobjects.Direction;
 import common.Keys;
 import common.State;
-import backend.model.minimaxAB.dataobjects.Board;
-import backend.model.minimaxAB.dataobjects.Direction;
 
 /**
  * The AIsolver class that uses Artificial Intelligence to estimate the next
