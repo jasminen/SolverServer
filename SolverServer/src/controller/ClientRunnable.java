@@ -9,6 +9,13 @@ import java.net.SocketException;
 import model.minimaxAB.MinimaxAB;
 import common.Message;
 
+
+/**
+ * The Client Runnable for every new connection.
+ * 
+ * @author Tzelon Machluf and Jasmine Nouriel
+ *
+ */
 public class ClientRunnable implements Runnable {
 
 	protected Socket clientSocket = null;
@@ -16,12 +23,21 @@ public class ClientRunnable implements Runnable {
 	protected ObjectOutputStream output;
 	protected ObjectInputStream input;
 		
-
+/**
+ * The constructor
+ * @param clientSocket Client socket. 
+ * @param serverText  Server text can be send to the client. 
+ */
 	public ClientRunnable(Socket clientSocket, String serverText) {
 		this.clientSocket = clientSocket;
 		this.serverText = serverText;
 	}
 
+	/**
+	 * Main function: Support Client Commands:
+	 * "exit" - To disconnect from the server.
+	 * "getHint" - To received a hint.
+	 */
 	public void run() {
 		try {
 			System.out.println("Client "+clientSocket.getRemoteSocketAddress()+" is connected");

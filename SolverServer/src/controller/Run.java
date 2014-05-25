@@ -2,7 +2,12 @@ package controller;
 
 import java.io.IOException;
 
-
+/**
+ * Main function of the server - start the server on port 9000.
+ * 
+ * @author Tzelon Machluf and Jasmine Nouriel
+ *
+ */
 public class Run {
 
 	public static void main(String[] args) throws IOException {

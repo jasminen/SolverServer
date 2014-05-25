@@ -11,10 +11,10 @@ import common.Keys;
 import common.State;
 
 /**
- * The AIsolver class that uses Artificial Intelligence to estimate the next
+ * The MinimaxAB class that uses Alpha-Beta pruning algorithm to estimate the next
  * move.
  * 
- * @author Vasilis Vryniotis <bbriniotis at datumbox.com>
+ * @author Tzelon Machluf and Jasmine Nouriel based on Vasilis Vryniotis <bbriniotis at datumbox.com> minimax algorithm
  */
 public class MinimaxAB {
 
@@ -187,7 +187,6 @@ public class MinimaxAB {
 					continue; // ignore empty cells
 				}
 
-				// clusteringScore-=boardArray[i][j];
 
 				// for every pixel find the distance from each neightbors
 				int numOfNeighbors = 0;

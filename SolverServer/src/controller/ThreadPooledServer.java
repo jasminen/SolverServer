@@ -8,7 +8,15 @@ import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ThreadPooledServer implements Runnable{
+
+/**
+ * The server class - using Fixed Thread Pool the server support up to 10 concurrent connection.
+ * Default port 9000
+ * 
+ * @author Tzelon Machluf and Jasmine Nouriel
+ *
+ */
+public class ThreadPooledServer implements Runnable {
 
 	
     protected int          serverPort   = 9000;
@@ -17,12 +25,15 @@ public class ThreadPooledServer implements Runnable{
     protected Thread       runningThread= null;
     protected ExecutorService threadPool = Executors.newFixedThreadPool(10);
     
-
-    public ThreadPooledServer(int port){
+/**
+ * Constructor with port parameter. 
+ * @param port 
+ */
+    public ThreadPooledServer(int port) {
         this.serverPort = port;
     }
 
-    public void run(){
+    public void run() {
         synchronized(this){
             this.runningThread = Thread.currentThread();
         }
@@ -57,6 +68,9 @@ public class ThreadPooledServer implements Runnable{
         }
     }
 
+    /**
+     * Open Server Socket function
+     */
     private void openServerSocket() {
         try {
         	InetAddress localaddr = InetAddress.getLocalHost();
@@ -64,7 +78,7 @@ public class ThreadPooledServer implements Runnable{
             this.serverSocket.setSoTimeout(0);
             System.out.println("Starting server " + localaddr.getHostAddress() + ", on port: " + this.serverPort);
         } catch (IOException e) {
-            throw new RuntimeException("Cannot open port 9000", e);
+            throw new RuntimeException("Cannot open port " + this.serverPort + " ", e);
         }
     }
 }

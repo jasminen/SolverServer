@@ -1,0 +1,9 @@
+model
+model.client
+model.game2048
+model.gameMaze
+model.gameMaze.solver
+model.gameMaze.solver.astar
+presenter
+view
+view.gamesMaze2048

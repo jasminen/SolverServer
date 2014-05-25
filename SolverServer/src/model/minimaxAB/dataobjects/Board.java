@@ -1,19 +1,3 @@
-/* 
- * Copyright (C) 2014 Vasilis Vryniotis <bbriniotis at datumbox.com>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 package model.minimaxAB.dataobjects;
 
 import java.util.ArrayList;
@@ -23,7 +7,7 @@ import java.util.Random;
 /**
  * The main class of the Game 2048.
  * 
- * @author Vasilis Vryniotis <bbriniotis at datumbox.com>
+ * @author Tzelon Machluf and Jasmine Nouriel based on Vasilis Vryniotis <bbriniotis at datumbox.com> minimax algorithm
  */
 public class Board implements Cloneable {
     /**
@@ -61,18 +45,11 @@ public class Board implements Cloneable {
      */
     private Integer cache_emptyCells=null;
     
-    /**
-     * Constructor without arguments. It initializes randomly the Board
-     */
-    public Board() {
-        boardArray = new int[BOARD_SIZE][BOARD_SIZE];
-        randomGenerator = new Random(System.currentTimeMillis());
-        
-        addRandomCell();
-        addRandomCell();
-        
-    }
-    
+/**
+ * Constructor - Creates new board with board matrix score as parameters
+ * @param board
+ * @param score
+ */
     public Board(int[][] board, int score) {
     	this.boardArray = board;
     	this.score = score;
