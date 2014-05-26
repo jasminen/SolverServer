@@ -5,7 +5,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketException;
-
 import model.minimaxAB.MinimaxAB;
 import common.Message;
 
@@ -51,7 +50,8 @@ public class ClientRunnable implements Runnable {
 					System.out.println("Client "+clientSocket.getRemoteSocketAddress()+" closed the connection");
 					break;
 				} else if (messageIn.getMsg().equals("getHint") && messageIn.getGame().equals("2048")) {
-					int direction = MinimaxAB.findBestMove(messageIn.getState(), messageIn.getDepth());
+					MinimaxAB solver = new MinimaxAB();
+					int direction = solver.findBestMove(messageIn.getState(), messageIn.getDepth());
 					output.writeObject(new Message(null, "This is the best next move", direction, messageIn.getGame(), messageIn.getDepth()));
 				}
 			}
@@ -66,8 +66,5 @@ public class ClientRunnable implements Runnable {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} 
-		catch (CloneNotSupportedException e) {
-			e.printStackTrace();
-		}
 	}
 }

@@ -8,7 +8,7 @@ import java.io.IOException;
  * @author Tzelon Machluf and Jasmine Nouriel
  *
  */
-public class Run {
+public class RunServer {
 
 	public static void main(String[] args) throws IOException {
 

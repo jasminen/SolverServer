@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import model.Solver;
 import model.minimaxAB.dataobjects.Board;
 import model.minimaxAB.dataobjects.Direction;
 import common.Keys;
@@ -16,7 +17,7 @@ import common.State;
  * 
  * @author Tzelon Machluf and Jasmine Nouriel based on Vasilis Vryniotis <bbriniotis at datumbox.com> minimax algorithm
  */
-public class MinimaxAB {
+public class MinimaxAB implements Solver {
 
 	/**
 	 * Player vs Computer enum class
@@ -41,14 +42,20 @@ public class MinimaxAB {
 	 * @return
 	 * @throws CloneNotSupportedException
 	 */
-	public static int findBestMove(State currentState, int depth) throws CloneNotSupportedException {
+	@Override
+	public int findBestMove(State currentState, int depth)  {
 		
         Board theBoard = new Board(currentState.getCopyBoard(), currentState.getScore());
-		Map<String, Object> result = alphabeta(theBoard, depth, Integer.MIN_VALUE, Integer.MAX_VALUE, Player.USER);
+		Map<String, Object> result = null;
+		try {
+			result = alphabeta(theBoard, depth, Integer.MIN_VALUE, Integer.MAX_VALUE, Player.USER);
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		if(!(result.get("Direction")==null))
+		if(result != null && result.get("Direction")!=null)
 			return ((Direction) result.get("Direction")).getCode();
-		System.out.println("The direction is null");
 		return Keys.UP;
 	}
 
